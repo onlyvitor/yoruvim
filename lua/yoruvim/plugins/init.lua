@@ -12,6 +12,12 @@ return {
     priority = 1000,
   },
   {
+    "nvim-tree/nvim-web-devicons",
+    lazy = false,
+    priority = 950,
+    opts = {},
+  },
+  {
     "folke/snacks.nvim",
     priority = 900,
     lazy = false,
@@ -30,16 +36,16 @@ return {
                        ███    ███                                            
 ]],
           keys = {
-            { key = "n", desc = "Novo arquivo", action = ":enew | startinsert", icon = " " },
+             { key = "n", desc = "Novo arquivo", action = ":enew | startinsert", icon = "" },
             { key = "o", desc = "Abrir arquivo por caminho", action = function()
               vim.api.nvim_feedkeys(":edit ", "n", false)
-            end, icon = " " },
-            { key = "f", desc = "Procurar arquivos", action = function() Snacks.picker.files() end, icon = " " },
-            { key = "p", desc = "Projetos recentes", action = function() Snacks.picker.projects() end, icon = " " },
-            { key = "c", desc = "Configuracoes", action = function()
-              Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
-            end, icon = " " },
-            { key = "q", desc = "Sair", action = ":qa", icon = " " },
+             end, icon = "" },
+             { key = "f", desc = "Procurar arquivos", action = function() Snacks.picker.files() end, icon = "" },
+             { key = "p", desc = "Projetos recentes", action = function() Snacks.picker.projects() end, icon = "" },
+             { key = "c", desc = "Configuracoes", action = function()
+               Snacks.picker.files({ cwd = vim.fn.stdpath("config") })
+             end, icon = "" },
+             { key = "q", desc = "Sair", action = ":qa", icon = "󰗎" },
           },
         },
         sections = { { section = "header" }, { section = "keys", gap = 1, padding = 1 } },
@@ -47,7 +53,7 @@ return {
       picker = {
         enabled = true,
         icons = {
-          files = { enabled = false },
+          files = { enabled = true },
           git = {
             commit = "*", staged = "+", added = "A", deleted = "D",
             ignored = "!", modified = "M", renamed = "R",
@@ -66,7 +72,7 @@ return {
     event = "VeryLazy",
     opts = {
       preset = "helix",
-      icons = { mappings = false },
+       icons = { mappings = true },
       spec = {
         { "<leader>f", group = "arquivos" },
         { "<leader>g", group = "git" },
