@@ -22,5 +22,7 @@ require("lazy").setup("yoruvim.plugins", {
   change_detection = { notify = false },
 })
 
-vim.cmd.colorscheme("catppuccin-mocha")
+local theme = require("yoruvim.core.theme")
+theme.setup()
+
 require("yoruvim.core.commands")

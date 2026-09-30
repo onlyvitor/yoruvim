@@ -44,5 +44,23 @@ vim.api.nvim_create_autocmd("LspAttach", {
         apply = true,
       })
     end, "Organizar imports")
+
+    -- Inlay hints
+    if vim.lsp.inlay_hint then
+      local function enable_hint(server)
+        local method = "textDocument/inlayHint"
+        local clients = vim.lsp.get_active_clients({ bufnr = bufnr, name = server })
+        if #clients > 0 then
+          pcall(vim.lsp.inlay_hint.enable, bufnr, true)
+        end
+      end
+      enable_hint("rust_analyzer")
+      enable_hint("clangd")
+      enable_hint("lua_ls")
+      enable_hint("jsonls")
+      enable_hint("pyright")
+      enable_hint("ts_ls")
+      enable_hint("vtsls")
+    end
   end,
 })
